@@ -43,10 +43,8 @@ npm run dev
 
 #http://localhost:5174/
 
-# code server
-npm install &npm run dev  
-or
-node app.js
+code server
+npm install & npm run dev  
 #http://localhost:3000/
 
 ```
@@ -59,7 +57,7 @@ node app.js
 │   └── package.json        # 项目依赖
 ├── server/                # 后端项目目录
 │   ├── src/               # 源码目录
-│   ├── config/            # 配置文件
+│   ├── api/               # vercle启动文件
 │   └── package.json       # 项目依赖
 └── README.md              # 项目说明文档
 
