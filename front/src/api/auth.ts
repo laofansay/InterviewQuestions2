@@ -1,4 +1,18 @@
-import request from '../utils/request'
+import request from '@/utils/request'
+
+export interface RegisterParams {
+  email: string
+  password: string
+}
+
+export interface RegisterResult {
+  message: string
+  email: string
+}
+
+export const register = (data: RegisterParams) => {
+  return request.post<RegisterResult>('/auth/register', data)
+}
 
 export interface LoginParams {
     email: string

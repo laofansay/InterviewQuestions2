@@ -1,4 +1,6 @@
+require('dotenv').config();  // 添加这行来确保加载环境变量
 const { createClient } = require('@supabase/supabase-js');
+
 
 const supabase = createClient(
     process.env.SUPABASE_URL,

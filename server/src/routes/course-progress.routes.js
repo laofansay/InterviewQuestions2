@@ -149,8 +149,14 @@ router.get('/:id', async (req, res) => {
  */
 router.post('/init/:courseId/:videoId', async (req, res) => {
     try {
+       
         //查询该课程下面所有 vodeo的时长
         const { courseId, videoId } = req.params;
+        console.log('req.params', courseId,videoId);  
+        console.log('userID', req.user);  
+
+       
+
         const totalWatchTime = 1000;
         // 检查是否已存在进度记录
         const { data: existingProgress } = await supabase
@@ -161,6 +167,7 @@ router.post('/init/:courseId/:videoId', async (req, res) => {
             .single();
         console.log('==', courseId, req.user.id);
         console.log('existingProgress==', existingProgress, courseId, req.user.id);
+
         if (!existingProgress) {
             // 创建新记录
             const { data: newProgress, error } = await supabase

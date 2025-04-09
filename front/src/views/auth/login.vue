@@ -38,12 +38,14 @@
           </el-form-item>
         </el-form>
         <div class="text-center mt-6 mb-2">
-          <router-link 
-            to="/auth/register" 
-            class="text-blue-600 hover:text-blue-700 transition-colors duration-300 text-sm font-medium"
+          <el-button 
+            link 
+            type="primary" 
+            @click="router.push('/auth/register')"
+            class="text-sm font-medium"
           >
             还没有账号？立即注册
-          </router-link>
+          </el-button>
         </div>
       </el-card>
     </div>

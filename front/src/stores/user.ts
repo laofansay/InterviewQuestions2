@@ -6,6 +6,7 @@ export const useUserStore = defineStore('user', {
   state: () => ({
     user: JSON.parse(localStorage.getItem('user') || 'null'),
     token: localStorage.getItem('token'),
+    stats: null
   }),
   getters: {
     isLoggedIn: (state) => !!state.token,
@@ -21,9 +22,9 @@ export const useUserStore = defineStore('user', {
         return false
       }
       try {
-        const { data } = await request.get('/auth/validate')
-        if (data.user) {
-          this.setUser(data.user)
+        const user= await request.get('/auth/validate')
+        if (user) {
+          //this.setUser(data.user)
           return true
         }
         this.logout()
@@ -53,6 +54,27 @@ export const useUserStore = defineStore('user', {
       this.setToken(null)
       this.setUser(null)
       ElMessage.success('退出登录成功')
+    },
+    async getUserProfile() {
+      try {
+        const user = await request.get('/auth/user')
+        if (user) {
+          this.setUser(user)
+        }
+      return user
+      } catch (error) {
+        console.error('获取用户信息失败:', error)
+        throw error
+      }
+    },
+
+    async getUserStats() {
+      // 由于当前接口没有返回统计数据，可以先返回默认值
+      return {
+        totalHours: 0,
+        completedCourses: 0,
+        learningDays: 0
+      }
     }
-  },
+  }
 })

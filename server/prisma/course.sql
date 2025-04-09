@@ -80,3 +80,5 @@ CREATE INDEX idx_video_course ON video(course_id);
 CREATE INDEX idx_watch_history_video ON watch_history(video_id);
 CREATE INDEX idx_watch_history_user ON watch_history(user_id);
 CREATE INDEX IF NOT EXISTS idx_course_progress_last_video ON course_progress(lastWatchedVideoId);
+
+

@@ -23,11 +23,6 @@
         <el-icon><User /></el-icon>
         <span>登录</span>
       </el-menu-item>
-      <el-menu-item index="/auth/register">
-        <el-button type="primary" class="register-btn">
-          注册
-        </el-button>
-      </el-menu-item>
     </template>
     <el-sub-menu v-else index="user" class="user-menu">
       <template #title>
@@ -52,6 +47,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useUserStore } from '../stores/user'
+import { computed } from 'vue'
 import {
   Reading,
   Timer,
@@ -64,9 +60,9 @@ import {
 const router = useRouter()
 const userStore = useUserStore()
 
-// 使用store中的计算属性
-const isLoggedIn = userStore.isLoggedIn
-const userAvatar = userStore.avatar
+// 将状态改为计算属性
+const isLoggedIn = computed(() => userStore.isLoggedIn)
+const userAvatar = computed(() => userStore.avatar)
 
 // 退出登录
 const handleLogout = () => {
