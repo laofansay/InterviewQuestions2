@@ -12,7 +12,7 @@ export default defineConfig({
         host: true,
         proxy: {
             '/api': {
-                target: process.env.VITE_API_URL || 'hhttps://iq2-api.vercel.app',
+                target: process.env.VITE_API_URL || 'https://iq2-api.vercel.app',
                 changeOrigin: true,
             },
         }
