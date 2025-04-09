@@ -1,17 +1,17 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 
-const options = {
+const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Trae API 文档',
+            title: 'Trae API Documentation',
             version: '1.0.0',
-            description: 'Trae 项目的 API 文档',
+            description: 'API documentation for Trae project',
         },
         servers: [
             {
-                url: 'http://localhost:3000',
-                description: '开发服务器',
+                url: process.env.API_URL || 'http://localhost:3000',
+                description: 'API Server',
             },
         ],
         components: {
@@ -24,9 +24,7 @@ const options = {
             },
         },
     },
-    apis: ['./routes/*.js'], // API 文件的路径
+    apis: ['./src/routes/*.js'],
 };
 
-const swaggerSpec = swaggerJsdoc(options);
-
-module.exports = swaggerSpec;
+module.exports = swaggerJsdoc(swaggerOptions);
