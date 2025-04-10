@@ -85,8 +85,8 @@ watch(() => userStore.isLoggedIn, (newValue) => {
 })
 
 const form = reactive({
-  email: '',
-  password: ''
+  email: 'yitofip753@bariswc.com',
+  password: 'your_password'
 })
 
 const rules = {

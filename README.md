@@ -49,6 +49,18 @@ npm install & npm run dev
 
 ```
 
+vercel 在线demo
+
+https://iq2front.vercel.app/auth/login
+
+username：yitofip753@bariswc.com
+password： your_password
+后台
+https://iq2-api.vercel.app/
+
+
+
+
 
 .
 ├── front                  # 前端项目目录
