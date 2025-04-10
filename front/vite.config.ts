@@ -1,8 +1,12 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+  
+  console.log('env', env.VITE_API_URL)
+  return {
     plugins: [vue()],
     css: {
         postcss: './postcss.config.js',
@@ -12,7 +16,7 @@ export default defineConfig({
         host: true,
         proxy: {
             '/api': {
-                target: process.env.VITE_API_URL || 'https://iq2-api.vercel.app',
+                target: env.VITE_API_URL || 'http://localhost:3000',
                 changeOrigin: true,
             },
         }
@@ -27,4 +31,5 @@ export default defineConfig({
         outDir: 'dist',
         sourcemap: false
     }
+  }
 })
